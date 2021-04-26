@@ -1,0 +1,16 @@
+<div class="sets">
+    {{#each this}}
+
+    <div class="set" style="background-image:url({{icon_svg_uri}})">
+        <div class="set-name">
+            {{name}}
+        </div>
+        <div class="stats">
+            <div>Card Count: {{card_count}}</div>
+            <div>New Card Count: {{new_cards}}</div>
+        </div>
+
+    </div>
+
+    {{/each}}
+</div>

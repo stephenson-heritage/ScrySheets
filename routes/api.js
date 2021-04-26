@@ -11,4 +11,12 @@ router.get('/sets', async (req, res) => {
 
 });
 
+router.get('/sets/:set', async (req, res) => {
+    let set = req.params.set;
+    let url = `https://api.scryfall.com/cards/search?order=set&q=e%3A${set}+not%3Areprint&unique=prints`.toLowerCase();
+    const d = await cache.fetchUrl(url);
+    res.json(d);
+
+});
+
 module.exports = router;

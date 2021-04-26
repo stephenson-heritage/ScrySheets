@@ -4,14 +4,21 @@ const axios = require("axios");
 module.exports = class {
 
     static async doFetch(url) {
-        const response = await axios.get(url, {
-            responseType: 'json'
-        });
+        let response;
+        try {
+            response = await axios.get(url, {
+                responseType: 'json'
+            });
+        }
+        catch (err) {
+            return null;
+        }
         const content = await response.data;
         return content;
     }
 
     static async fetchUrl(url, maxAge) {
+        maxAge = 1;
         if (maxAge === undefined) {
             maxAge = 1000 * 60 * 60 * 24 * 7; // default 1 week
         }
@@ -30,6 +37,7 @@ module.exports = class {
             } else {
                 // older than maxAge
                 const content = await module.exports.doFetch(url);
+
                 let connection = await db.getConnection();
                 await connection.query(
                     'UPDATE `cache` SET `content`= ? WHERE  `cacheId`=?;',

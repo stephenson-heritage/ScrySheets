@@ -18,7 +18,6 @@ module.exports = class {
     }
 
     static async fetchUrl(url, maxAge) {
-        maxAge = 1;
         if (maxAge === undefined) {
             maxAge = 1000 * 60 * 60 * 24 * 7; // default 1 week
         }

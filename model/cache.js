@@ -1,9 +1,12 @@
 const db = require('../config/db');
 const axios = require("axios");
-
+let age = function () {
+    return Math.random() * (30 - 15) + 15;
+}
 module.exports = class {
 
     static async doFetch(url) {
+        console.log(`cache miss: ${url}`)
         let response;
         try {
             response = await axios.get(url, {
@@ -19,7 +22,7 @@ module.exports = class {
 
     static async fetchUrl(url, maxAge) {
         if (maxAge === undefined) {
-            maxAge = 1000 * 60 * 60 * 24 * 7; // default 1 week
+            maxAge = 1000 * 60 * 60 * 24 * age(); // random
         }
         let connection = await db.getConnection();
         let rows = await connection.query(

@@ -11,9 +11,7 @@ dotenv.config();
 
 const port = process.env.PORT;
 const app = express();
-//const port = 9000;
 
-//const User = require('./model/User');
 
 app.use('/', express.static(path.join(__dirname, 'public')));
 

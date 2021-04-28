@@ -1,0 +1,21 @@
+<div class="sets">
+    {{#each this}}
+
+    <div class="set" style="background-image:url({{icon_svg_uri}})">
+        <div class="set-name">
+            {{name}}
+        </div>
+        <div class="stats">
+            <div style="grid-column:1">Card Count: {{card_count}}</div>
+            <div style="grid-column:1">New Card Count: {{new_cards}}</div>
+            <div style="grid-column:1">Reprint Count: {{reprint_count}}</div>
+
+            <div style="grid-column:2;grid-row:1">New Card Avg. Character Count: {{new_cards_stats.avg_char}}</div>
+            <div style="grid-column:2;grid-row:2">New Card Avg. Word Count: {{new_cards_stats.avg_word}}</div>
+
+        </div>
+
+    </div>
+
+    {{/each}}
+</div>

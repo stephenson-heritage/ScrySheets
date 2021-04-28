@@ -1,16 +1,30 @@
-<div class="sets">
-    {{#each this}}
-
-    <div class="set" style="background-image:url({{icon_svg_uri}})">
-        <div class="set-name">
-            {{name}}
-        </div>
-        <div class="stats">
-            <div>Card Count: {{card_count}}</div>
-            <div>New Card Count: {{new_cards}}</div>
-        </div>
-
-    </div>
-
-    {{/each}}
-</div>
+<table>
+    <thead>
+        <tr>
+            <td>Symbol</td>
+            <td>Name</td>
+            <td>Released</td>
+            <td>Set Type</td>
+            <td>Card Count</td>
+            <td>New Card Count</td>
+            <td>Reprint Count</td>
+            <td>New Card Avg. Character Count</td>
+            <td>New Card Avg. Word Count</td>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each this}}
+        <tr>
+            <td><img style="height:1.5em" src="{{icon_svg_uri}}" /></td>
+            <td>{{name}}</td>
+            <td>{{released_at}}</td>
+            <td>{{set_type}}</td>
+            <td>{{total_cards}}</td>
+            <td>{{new_cards}}</td>
+            <td>{{reprint_count}}</td>
+            <td>{{new_cards_stats.avg_char}}</td>
+            <td>{{new_cards_stats.avg_word}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
